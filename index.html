@@ -20,9 +20,9 @@
                     <br>
                     <br>
                     <div>
-                        <label for="box">Chat <img src="Images/ui/icons/chat.png" ></label>
-                        <label>Contacts <img src="Images/ui/icons/contacts.png" ></label>
-                        <label>Settings <img src="Images/ui/icons/\settings.png" ></label>
+                        <label id="label_chat" for="radio_chat">Chat <img src="Images/ui/icons/chat.png" ></label>
+                        <label id="label_contacts" for="radio_contacts">Contacts <img src="Images/ui/icons/contacts.png" ></label>
+                        <label id="label_settings" for="radio_settings">Settings <img src="Images/ui/icons/\settin gs.png" ></label>
                     </div>
                     
                 </div>
@@ -32,8 +32,13 @@
                 <div id="header">My Chat</div>
                 <div id="container" style="display: flex;">
                     <div id="inner_left_pannel">
-                        <input type="checkbox" id="box">
+            
                     </div>
+
+                    <input type="radio" id="radio_chat" name="my_radio" style="display: none;">
+                    <input type="radio" id="radio_contacts" name="my_radio" style="display: none;">
+                    <input type="radio" id="radio_settings" name="my_radio" style="display: none;">
+                    
                     <div id="inner_right_pannel"></div>
                 </div>
             </div>

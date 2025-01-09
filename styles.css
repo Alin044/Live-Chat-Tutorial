@@ -36,6 +36,7 @@
     border-bottom: solid thin #ffffff55;
     cursor: pointer;
     padding: 5px;
+    transition: all 1s ease;
 }
 #left_pannel label:hover{
     background-color: #778593;
@@ -68,4 +69,13 @@
     background-color: #f2f7f8;
     flex: 2;
     min-height: 430px;
+    transition: all 2s ease;
+}
+
+#radio_contacts:checked ~ #inner_right_pannel{
+    flex: 0;
+}
+
+#radio_settings:checked ~ #inner_right_pannel{
+    flex: 0;
 }
