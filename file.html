@@ -1,0 +1,18 @@
+<input type="text" id="mytextbox" myattr="something" class="myclass">
+<input type="button" id="mybutton" value="clickme" class="myclass">
+
+<script type="text/javascript">
+    var element = document.getElementById("mytextbox");
+    alert(element.getAttribute("myattr"));
+    console.log(element.getAttribute("myattr"));
+    element.setAttribute("type", "button");
+    alert(element.getAttribute("type"));
+
+    var elements = document.getElementsByClassName("myclass");
+    alert(elements[0].id);
+
+    for(var i = elements.length - 1; i >= 0; i--){
+        console.log(elements[i]);
+    }
+
+</script>
