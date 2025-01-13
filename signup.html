@@ -2,7 +2,6 @@
 <html>
     <head>
         <title>My Chat</title>
-        <link rel="stylesheet" href="styles.css">
         <style>
             @font-face{
                 font-family: headFont;
@@ -15,7 +14,6 @@
             #wrapper{
                 max-width: 900px;
                 min-height: 500px;
-                display: flex;
                 margin: auto;
                 color: gray;
                 font-family: myFont;
@@ -40,6 +38,8 @@
             input[type=submit]{
                 width: 103%;
                 cursor: pointer;
+                background-color: rgb(25, 69, 126);
+                color: white;
             }
 
             input[type=radio]{
@@ -47,22 +47,37 @@
                 cursor: pointer;
             }
 
+            .login_header{
+                background-color: #485b6c;
+                font-size: 40px;
+                text-align: center;
+                font-family: headFont;
+                width: 100%;
+                color: white;
 
+            }
            
         </style>
     </head>
     <body>
         <div id="wrapper">
-            <form>
+            <div class="login_header">
+                My Chat
+                <div style="font-size: 20px; font-family: myFont;">
+                    Sign Up
+                </div>
+            </div>
+            <form id="myform">
                 <input type="text" name="username" placeholder="Username"><br>
+                <input type="text" name="email" placeholder="Email"><br>
                 <div style="padding: 10px;">
                     <br>Gender:<br>
-                    <input type="radio" name="gender"> Male<br>
-                    <input type="radio" name="gender"> Female<br>
+                    <input type="radio" value="Male" name="gender"> Male<br>
+                    <input type="radio" value="Female" name="gender"> Female<br>
                 </div>
                 <input type="password" name="password" placeholder="Password"><br>
                 <input type="password" name="password2" placeholder="Retype Password"><br>
-                <input type="submit" value="Sign Up"><br>
+                <input type="submit" value="Sign Up" id="signup_button"><br>
             </form>
         </div>
 
@@ -74,23 +89,42 @@
         return document.getElementById(element);
     }
 
-    function readData(){
-        var inner_pannel = _("inner_left_pannel"); 
-    }
+    let signup_button = _("signup_button");
+    signup_button.addEventListener("click", collect_data);
 
-    var label = _("label_chat");
-    label.addEventListener("click", function(){
-        var inner_pannel = _("inner_left_pannel");
-        var ajax = new XMLHttpRequest();
-        ajax.onload = function(){
-            if(ajax.status == 200 || ajax.readyState == 4){
-                inner_pannel.innerHTML = ajax.responseText;
+    function collect_data(){
+        let myform = _("myform");
+        let inputs = myform.getElementsByTagName("INPUT");
+        let data = {};
+        for(let i = inputs.length - 1; i >= 0; i--){
+            let key = inputs[i].name;
+
+            switch(key){
+                case "username" : 
+                    data.username = inputs[i].value;
+                    break;
+                case "email" :
+                    data.email = inputs[i].value;
+                    break;
+                case "gender" :
+                    if(inputs[i].checked){
+                        data.gender = inputs[i].value;
+                    }
+                    break;
+                case "password" :
+                    data.password = inputs[i].value;
+                    break;
+                case "password2" :
+                    data.password2 = inputs[i].value;
+                    break;
+
             }
         }
+        alert(JSON.stringify(data));
+    }
 
-        ajax.open("POST", "file.txt", true);
-        ajax.send();
-    });
-
+    function send_data(data, type){
+        
+    }
 
 </script>
