@@ -27,7 +27,7 @@
                 max-width: 400px;
             }
 
-            input[type=text], input[type=password], input[type=submit]{
+            input[type=text], input[type=password], input[type=button]{
                 padding: 10px;
                 margin: 10px;
                 width: 98%;
@@ -35,7 +35,7 @@
                 border: solid thin gray;
             }
 
-            input[type=submit]{
+            input[type=button]{
                 width: 103%;
                 cursor: pointer;
                 background-color: rgb(25, 69, 126);
@@ -77,7 +77,7 @@
                 </div>
                 <input type="password" name="password" placeholder="Password"><br>
                 <input type="password" name="password2" placeholder="Retype Password"><br>
-                <input type="submit" value="Sign Up" id="signup_button"><br>
+                <input type="button" value="Sign Up" id="signup_button"><br>
             </form>
         </div>
 
@@ -120,11 +120,24 @@
 
             }
         }
-        alert(JSON.stringify(data));
+        send_data(data, "signup");
+
     }
 
     function send_data(data, type){
-        
+    var xml = new XMLHttpRequest();
+
+    xml.onload = function(){
+        if(xml.readyState == 4 && xml.status == 200){
+            alert(xml.responseText);
+        }
     }
+    data.data_type = type;
+    var data_string = JSON.stringify(data);
+    xml.open("POST", "api.php", true);
+    xml.setRequestHeader("Content-Type", "application/json");
+    xml.send(data_string);
+}
+
 
 </script>
